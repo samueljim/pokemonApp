@@ -12,7 +12,9 @@
     "start": "node app.js",
     "test": "mocha --reporter spec",
     "postinstall": "npm rebuild node-sass",
-    "eslint": "eslint **/*.js"
+    "eslint": "eslint **/*.js",
+    "mongoWIN": "cd C:/Program Files/MongoDB/Server/3.4/bin && mongod.exe",
+    "mongo": "sudo service mongod start"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
