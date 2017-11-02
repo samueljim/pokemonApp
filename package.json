@@ -10,6 +10,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
+    "startdev": "nodemon app.js",
     "test": "mocha --reporter spec",
     "postinstall": "npm rebuild node-sass",
     "eslint": "eslint **/*.js",
@@ -45,6 +46,7 @@
     "node-linkedin": "^0.5.6",
     "node-sass-middleware": "^0.11.0",
     "nodemailer": "^4.0.1",
+    "nodemon": "^1.12.1",
     "passport": "0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
@@ -56,6 +58,7 @@
     "passport-openid": "^0.4.0",
     "passport-twitter": "^1.0.4",
     "paypal-rest-sdk": "^1.7.1",
+    "pokedex-promise-v2": "^3.0.3",
     "pug": "^2.0.0-rc.3",
     "request": "^2.81.0",
     "stripe": "^4.24.0",

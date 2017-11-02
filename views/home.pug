@@ -1,27 +1,39 @@
 extends layout
 
 block content
-  h1 Pokemon is life
-  p.lead A site for everything pokemon.
-  hr
-  .row
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+  .container
+    h1 Pokemon is life
+    p.lead A site for everything pokemon
+    hr
+    .row
+      .col-sm-12
+        h2 Find pokemon using the game they are in
+        p
+        .form-group
+          form.form-horizontal(method='POST')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+              label.col-sm-3.control-label(for='game') Game
+              .col-sm-7
+                input.form-control(type='game', name='game', id='game', placeholder='red', autofocus, required)
+            .form-group
+              .col-sm-offset-3.col-sm-7
+                button.col-sm-3.btn.btn-primary(type='submit')
+                  i.fa.fa-play
+                  | Search
+      .col-sm-12
+
+    //-   h2 Heading
+    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+    //-   p
+    //-     a.btn.btn-default(href='#', role='button') View details »
+    //- .col-sm-6
+    //-   h2 Heading
+    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+    //-   p
+    //-     a.btn.btn-default(href='#', role='button') View details »
+    //- .col-sm-6
+    //-   h2 Heading
+    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+    //-   p
+    //-     a.btn.btn-default(href='#', role='button') View details »
