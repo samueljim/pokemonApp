@@ -25,28 +25,29 @@ block content
                 button.col-sm-3.btn.btn-primary(type='submit')
                   i.fa.fa-play
                   | Search
-      .col-sm-12
+ 
 
     h3 Resutls
-    table.table
+  
+    table.table.col-m-6
       thead
         tr
+          th Image         
           th №
           th Name
           th Height
           th Weight
-          th Image 
       tbody
       for each in pokies
         tr
-         a(href=each.location_area_encounters)
+          <td> 
+            <img src="#{each.sprite}", onmouseover="#{each.sprite2}", onmouseout=src="#{each.sprite}", alt="image", href="http://pokeapi.co#{each.location_area_encounters}" />
+          </td>
           td= each.id
           td!= each.name
           td!= each.height
           td!= each.weight
-          <td> 
-            <img src="(each.sprite)", alt="image" />
-          </td>
+      
 
     //-   h2 Heading
     //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
