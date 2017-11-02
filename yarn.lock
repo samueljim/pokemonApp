@@ -695,6 +695,10 @@ commander@2.9.0:
   dependencies:
     graceful-readlink ">= 1.0.0"
 
+commander@^2.9.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
+
 component-bind@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/component-bind/-/component-bind-1.0.0.tgz#00c608ab7dcd93897c0009651b1d3a8e1e73bbd1"
@@ -1587,6 +1591,13 @@ gaze@^1.0.0:
   resolved "https://registry.yarnpkg.com/gaze/-/gaze-1.1.2.tgz#847224677adb8870d679257ed3388fdb61e40105"
   dependencies:
     globule "^1.0.0"
+
+generate-schema@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/generate-schema/-/generate-schema-2.5.1.tgz#73c8ddd07dfeb47e0becd43c4e93a93b2d67f18a"
+  dependencies:
+    commander "^2.9.0"
+    type-of-is "^3.4.0"
 
 get-caller-file@^1.0.1:
   version "1.0.2"
@@ -4303,6 +4314,10 @@ type-is@^1.6.4, type-is@~1.6.15:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.15"
+
+type-of-is@^3.4.0:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/type-of-is/-/type-of-is-3.5.1.tgz#eec2fc89b828dbf9900eb6416eee30f4fe0fcd31"
 
 typedarray@^0.0.6:
   version "0.0.6"

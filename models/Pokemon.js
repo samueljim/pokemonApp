@@ -1,29 +1,17 @@
 // const bcrypt = require('bcrypt-nodejs');
 // const crypto = require('crypto');
+
 const mongoose = require('mongoose');
 
 const pokemonSchema = new mongoose.Schema({
-  email: { type: String, unique: true },
-  password: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  steam: String,
-  tokens: Array,
-
-  profile: {
-    name: String,
-    gender: String,
-    location: String,
-    website: String,
-    picture: String
-  }
+  versions: Array,
+  name: String,
+  sprite: String,
+  height: Number,
+  weight: Number,
+  id: Number,
+  order: Number,
+  location_area_encounters: String
 }, { timestamps: true });
 
 // /**
