@@ -1,4 +1,11 @@
 const Pokemon = require('../models/Pokemon');
+const bluebird = require('bluebird');
+const request = bluebird.promisifyAll(require('request'), {
+  multiArgs: true
+});
+const Pokedex = require('pokedex-promise-v2');
+
+// const cheerio = require('cheerio');
 
 /**
  * GET /
@@ -52,25 +59,43 @@ exports.getPokemon = (req, res) => {
   // });
 };
 
-exports.fillPokemon = (req, res, next) => {
+exports.fillPokemon = (req, res) => {
+  const P = new Pokedex();
+
   console.log('filling');
 
-  const pokemon = new Pokemon({
-    email: req.body.email,
-    password: req.body.password
+
+  P.getPokemonByName('eevee').then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    console.log('There was an ERROR: ', error);
   });
 
-  pokemon.save((err) => {
-    if (err) { return next(err); }
-    req.logIn(pokemon, (err) => {
-      if (err) {
-        req.flash('errors', err);
-        return next(err);
-      }
-      // res.redirect('/');
-    });
-  });
+  // request.get('https://news.ycombinator.com/', (err, request, body) => {
+  // if (err) { return next(err); }
+  // const $ = cheerio.load(body);
 
-  req.flash('success', pokemon);
+  // const pokemon = new Pokemon({
+  //   email: body.email,
+  //   password: body.password
+  // });
+  // // const links = [];
+  // // $('.title a[href^="http"], a[href^="https"]').each((index, element) => {
+  // //   links.push($(element));
+  // // });
+
+  // pokemon.save((err) => {
+  //   if (err) { return next(err); }
+  //   req.logIn(pokemon, (err) => {
+  //     if (err) {
+  //       req.flash('errors', err);
+  //       return next(err);
+  //     }
+  //     // res.redirect('/');
+  //   });
+  // });
+
+  // req.flash('success', pokemon);
   res.redirect('/');
+  // });
 };
