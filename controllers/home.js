@@ -16,15 +16,11 @@ exports.index = (req, res, next) => {
       res.redirect('/');
       return next(err);
     }
-    // console.log(req.body.game);
     res.render('home', {
       title: 'Home',
       pokies
     });
   });
-  // res.render('home', {
-  //   title: 'Home'
-  // });
 };
 
 /**
@@ -78,7 +74,8 @@ exports.fillPokemon = (req, res, next) => {
         id: response.id,
         order: response.order,
         location_area_encounters: response.location_area_encounters,
-        sprite: response.sprites.front_default
+        sprite: response.sprites.front_default,
+        sprite2: response.sprites.back_default
       });
       
       pokemon.save((err) => {

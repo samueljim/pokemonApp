@@ -38,13 +38,15 @@ block content
           th Image 
       tbody
       for each in pokies
-       a(href=each.location_area_encounters)
-          tr
-            td= each.id
-            td!= each.name
-            td!= each.height
-            td!= each.weight
-            img(scr=each.sprite)
+        tr
+         a(href=each.location_area_encounters)
+          td= each.id
+          td!= each.name
+          td!= each.height
+          td!= each.weight
+          <td> 
+            <img src="(each.sprite)", alt="image" />
+          </td>
 
     //-   h2 Heading
     //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
