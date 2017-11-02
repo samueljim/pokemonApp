@@ -26,18 +26,25 @@ block content
                   i.fa.fa-play
                   | Search
       .col-sm-12
-  //- if req.isCurrent
-  h3 Resutls
-  //- table.table.table-condensed
-  //-   thead
-  //-     tr
-  //-       th №
-  //-       th Title
-  //-   tbody
-  //-     each link, index in name
-  //-       tr
-  //-         td= index + 1
-  //-         td!= name
+
+    h3 Resutls
+    table.table
+      thead
+        tr
+          th №
+          th Name
+          th Height
+          th Weight
+          th Image 
+      tbody
+      for each in pokies
+       a(href=each.location_area_encounters)
+          tr
+            td= each.id
+            td!= each.name
+            td!= each.height
+            td!= each.weight
+            img(scr=each.sprite)
 
     //-   h2 Heading
     //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.

@@ -10,10 +10,21 @@ const Pokemon = require('../models/Pokemon');
  * GET /
  * Home page.
  */
-exports.index = (req, res) => {
-  res.render('home', {
-    title: 'Home'
+exports.index = (req, res, next) => {
+  Pokemon.find({ versions: 'red' }, (err, pokies) => {
+    if (err) {
+      res.redirect('/');
+      return next(err);
+    }
+    // console.log(req.body.game);
+    res.render('home', {
+      title: 'Home',
+      pokies
+    });
   });
+  // res.render('home', {
+  //   title: 'Home'
+  // });
 };
 
 /**
@@ -21,12 +32,10 @@ exports.index = (req, res) => {
  * find's a pokemon
  */
 exports.getPokemon = (req, res, next) => {
-  req.assert('game', 'Not a pokemon game').isIn(['red', 'blue', 'black']);
-  // req.assert('password', 'Password must be at least 4 characters long').len(4);
-  // req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  // req.sanitize('email').normalizeEmail({ gmail_remove_dots: false });
+  req.assert('game', 'Not a pokemon game').isIn(["white-2", "black-2", "white", "black", "soulsilver", "heartgold", "platinum", "pearl",  "diamond", "leafgreen",  "firered",  "emerald", "sapphire", "ruby", "crystal", "silver", "gold", "yellow", "blue", "red"]);
 
-  const errors = req.getValidationResult();
+
+  const errors = req.validationErrors();
 
   if (errors) {
     req.flash('errors', errors);
@@ -37,8 +46,11 @@ exports.getPokemon = (req, res, next) => {
   // res.redirect('/');
 
   Pokemon.find({ versions: req.body.game }, (err, pokies) => {
-    if (err) { return next(err); }
-    console.log(req.body.game);
+    if (err) {
+      res.redirect('/');
+      return next(err);
+    }
+    // console.log(req.body.game);
     res.render('home', {
       title: 'Home',
       pokies
