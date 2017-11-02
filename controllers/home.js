@@ -57,7 +57,7 @@ exports.getPokemon = (req, res, next) => {
 exports.fillPokemon = (req, res, next) => {
   console.log('filling');
   var i = 0;
-  for (i = 210; i < 220; i++) {
+  for (i = 0; i < 802; i++) {
     P.getPokemonByName(1 + i)
     .then(function(response) {
       var games = [];
