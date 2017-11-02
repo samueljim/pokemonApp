@@ -1,26 +1,14 @@
-# take default image of node boron i.e  node 6.x
-FROM node:6.10.1
+FROM node:6-slim
 
-MAINTAINER Kunal Kapadia <kunalkapadia12@gmail.com>
+COPY . /starter
+COPY package.json /starter/package.json
+COPY .env.example /starter/.env.example
 
-# create app directory in container
-RUN mkdir -p /app
+WORKDIR /starter
 
-# set /app directory as default working directory
-WORKDIR /app
+ENV NODE_ENV production
+RUN npm install --production
 
-# only copy package.json initially so that `RUN yarn` layer is recreated only
-# if there are changes in package.json
-ADD package.json yarn.lock /app/
+CMD ["npm","start"]
 
-# --pure-lockfile: Don’t generate a yarn.lock lockfile
-RUN yarn --pure-lockfile
-
-# copy all file from current dir to /app in container
-COPY . /app/
-
-# expose port 4040
-EXPOSE 4040
-
-# cmd to start service
-CMD [ "yarn", "start" ]
+EXPOSE 8888
