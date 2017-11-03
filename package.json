@@ -66,6 +66,7 @@
     "paypal-rest-sdk": "^1.7.1",
     "pokedex-promise-v2": "^3.0.3",
     "pug": "^2.0.0-rc.3",
+    "recrawler": "^2.0.0",
     "request": "^2.81.0",
     "stripe": "^4.24.0",
     "tumblr.js": "^1.1.1",
