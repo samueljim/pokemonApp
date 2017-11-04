@@ -53,11 +53,9 @@ exports.getPokemon = (req, res, next) => {
   });
 };
 
-exports.fillPokemon = (req, res, next) => {
-  console.log('filling');
-  // var i = 0;
-  for (var i = 0; i < 1; i++) {
-    P.getPokemonByName(1 + i)
+function fill(number) {
+  // for (i = number; i < (number + 10); i++) {
+    P.getPokemonByName(1 + number)
       .then(function (response) {
         var games = [];
         for (game in response.game_indices) {
@@ -65,37 +63,53 @@ exports.fillPokemon = (req, res, next) => {
         }
         console.log('https://bulbapedia.bulbagarden.net/wiki/' + response.name);
 
-        recrawler('https://bulbapedia.bulbagarden.net/wiki/' + response.name)
-        .then($ => {
-            $('.roundy').each(function () {
-                const url = $(this).attr('a')
-                console.log(url)
-            })
-        })
-{/* <td class="roundy" style="background:#FFF; padding-left: 5px;"> <a href="/wiki/Starter_Pok%C3%A9mon" title="Starter Pokémon">Starter Pokémon</a> from <a href="/wiki/Professor_Oak" title="Professor Oak">Professor Oak</a> in <a href="/wiki/Pallet_Town" title="Pallet Town">Pallet Town</a>
-</td> */}
-        // const pokemon = new Pokemon({
-        //   versions: games,
-        //   name: response.name,
-        //   height: response.height,
-        //   weight: response.weight,
-        //   id: response.id,
-        //   order: response.order,
-        //   location_area_encounters: response.location_area_encounters,
-        //   sprite: response.sprites.front_default,
-        //   sprite2: response.sprites.back_default
-        // });
+        // recrawler('https://bulbapedia.bulbagarden.net/wiki/' + response.name)
+        // .then($ => {
+        //     $('.roundy').each(function () {
+        //         const url = $(this).attr('a')
+        //         console.log(url)
+        //     })
+        // })
+  {/* <td class="roundy" style="background:#FFF; padding-left: 5px;"> <a href="/wiki/Starter_Pok%C3%A9mon" title="Starter Pokémon">Starter Pokémon</a> from <a href="/wiki/Professor_Oak" title="Professor Oak">Professor Oak</a> in <a href="/wiki/Pallet_Town" title="Pallet Town">Pallet Town</a>
+  </td> */}
+        const pokemon = new Pokemon({
+          versions: games,
+          name: response.name,
+          height: response.height,
+          weight: response.weight,
+          id: response.id,
+          order: response.order,
+          location_area_encounters: response.location_area_encounters,
+          sprite: response.sprites.front_default,
+          sprite2: response.sprites.back_default
+        });
 
-      //   pokemon.save((err) => {
-      //     if (err) {
-      //       req.flash('errors', err);
-      //       return next(err);
-      //     }
-      //     console.log(response.id);
-      //   });
+        pokemon.save((err) => {
+          if (err) {
+            req.flash('errors', err);
+            return next(err);
+          }
+          console.log(response.id);
+        });
       }).catch(function (error) {
         console.log('There was an ERROR: ', error);
-        return next(error);
+        setTimeout(function(){
+          fill(number);
+        }, 2000);
+        // return next(error);
       });
+  if (number < 800) {
+    number ++;
+    setTimeout(function(){
+      fill(number);
+    }, 2000);
+  } else {
+    console.log('done');
   }
+}
+
+exports.fillPokemon = (req, res) => {
+  console.log('filling');
+    fill(0);
 };
+

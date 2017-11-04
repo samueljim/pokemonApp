@@ -1,7 +1,7 @@
 {
-  "name": "hackathon-starter",
+  "name": "pokem",
   "version": "4.3.0",
-  "description": "A boilerplate for Node.js web applications",
+  "description": "a pokemon app",
   "repository": {
     "type": "git",
     "url": "https://github.com/sahat/hackathon-starter.git"
@@ -11,7 +11,7 @@
     "npm": ">=5.3.8",
     "yarn": "^1.0.2"
   },
-  "author": "Sahat Yalkabov",
+  "author": "Samuel Henry",
   "license": "MIT",
   "scripts": {
     "start": "node app.js",
@@ -86,7 +86,6 @@
     "supertest": "^3.0.0"
   },
   "eslintConfig": {
-    "extends": "airbnb-base",
     "rules": {
       "comma-dangle": 0,
       "consistent-return": 0,
